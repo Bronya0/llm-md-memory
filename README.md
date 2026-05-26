@@ -43,20 +43,18 @@ Copy-Item $env:USERPROFILE\.agents\memories\SKILL.md $env:USERPROFILE\.agents\sk
    - 复制 SKILL.md: mkdir -p ~/.agents/skills/memory && cp ~/.agents/memories/SKILL.md ~/.agents/skills/memory/SKILL.md
    - 在 ~/.config/opencode/AGENTS.md 中追加以下触发规则（如已存在则跳过）：
 
-   ```
-   ## 记忆检查
+       ## 记忆检查
 
-   在做以下事情之前，先读 ~/.agents/memories/INDEX.md 检查是否有相关记忆：
+       在做以下事情之前，先读 ~/.agents/memories/INDEX.md 检查是否有相关记忆：
 
-   - 开始一个新项目或接手一个已有项目
-   - 做技术选型 / 架构决策
-   - 用户提到了之前聊过的内容
-   - 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
-   - 用户说"和上次一样"或类似表达
+       - 开始一个新项目或接手一个已有项目
+       - 做技术选型 / 架构决策
+       - 用户提到了之前聊过的内容
+       - 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
+       - 用户说"和上次一样"或类似表达
 
-   记忆数据存放在 ~/.agents/memories/data/。
-   新增/修改/删除记忆时，加载 ~/.agents/memories/SKILL.md 作为操作指令。
-   ```
+       记忆数据存放在 ~/.agents/memories/data/。
+       新增/修改/删除记忆时，加载 ~/.agents/memories/SKILL.md 作为操作指令。
 
    Claude Code:
    - 在 ~/.claude/CLAUDE.md 中添加上方触发规则（如已存在则跳过）
