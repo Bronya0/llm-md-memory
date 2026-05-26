@@ -1,0 +1,4 @@
+# 不要提交个人记忆数据（仅保留模板 INDEX.md）
+# 用户克隆后自行在 data/ 下创建记忆文件
+data/*
+!data/.gitkeep
