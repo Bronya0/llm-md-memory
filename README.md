@@ -30,7 +30,9 @@ git clone https://github.com/Bronya0/llm-md-memory.git $env:USERPROFILE\.agents\
 ```
 ~/.agents/memories/
 ├── INDEX.md              ← 记忆索引（agent 每次检查是否触发条件后先读它）
-├── memory-skill.md       ← 操作指南（query / add / update / delete）
+├── memory-skill.md       ← 通用操作指南（query / add / update / delete）
+├── opencode/             ← opencode 专用 skill 文件
+│   └── SKILL.md
 └── data/                 ← 实际记忆数据
     ├── .gitkeep
     └── your-memory.md    ← 按主题分类的 .md 文件（你后续自行创建）
@@ -62,6 +64,20 @@ Agent System Prompt (始终加载)
 ## 集成到各 Agent
 
 ### opencode
+
+**1. 安装 skill**
+
+将 `opencode/SKILL.md` 复制到 opencode 的 skills 目录：
+
+```bash
+# Linux / macOS
+cp -r opencode ~/.agents/skills/memory/
+
+# Windows PowerShell
+Copy-Item -Recurse opencode $env:USERPROFILE\.agents\skills\memory\
+```
+
+**2. 配置触发规则**
 
 编辑 `~/.config/opencode/AGENTS.md`，插入以下内容：
 
@@ -115,4 +131,4 @@ Agent System Prompt (始终加载)
 
 ## License
 
-MIT
+GPL-3.0
