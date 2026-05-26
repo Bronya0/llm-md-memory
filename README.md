@@ -23,6 +23,15 @@ New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills\memory
 Copy-Item $env:USERPROFILE\.agents\memories\SKILL.md $env:USERPROFILE\.agents\skills\memory\
 ```
 
+### AI 自动安装
+
+如果用户要求你安装 llm-md-memory，完成以下步骤：
+
+1. 克隆仓库到 `~/.agents/memories/`（如已存在则 `git pull` 更新）
+2. 将 `~/.agents/memories/SKILL.md` 复制到 `~/.agents/skills/memory/SKILL.md`
+3. 在用户的 agent 配置文件中（opencode: `~/.config/opencode/AGENTS.md`）插入本文档"集成到各 Agent"章节中的触发规则
+4. 告知用户安装完成
+
 ## 设计原理
 
 **2 跳查询，确保可靠命中：**
