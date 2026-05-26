@@ -30,9 +30,7 @@ git clone https://github.com/Bronya0/llm-md-memory.git $env:USERPROFILE\.agents\
 ```
 ~/.agents/memories/
 ├── INDEX.md              ← 记忆索引（agent 每次检查是否触发条件后先读它）
-├── memory-skill.md       ← 通用操作指南（query / add / update / delete）
-├── opencode/             ← opencode 专用 skill 文件
-│   └── SKILL.md
+├── SKILL.md              ← opencode skill 文件（增删改查操作流程）
 └── data/                 ← 实际记忆数据
     ├── .gitkeep
     └── your-memory.md    ← 按主题分类的 .md 文件（你后续自行创建）
@@ -59,7 +57,7 @@ Agent System Prompt (始终加载)
 - **索引独立于 agent 规则文件**：INDEX.md 单独存储，增删记忆时只改它，agent 的 system prompt 保持稳定不变
 - **INDEX.md 禁止删除**：只允许编辑内容，确保索引文件永远存在
 - **2 跳而非 3~4 跳**：INDEX.md 直接列出所有记忆文件的描述，agent 一眼看清有哪些记忆
-- **增删改走 skill**：复杂操作由 memory-skill.md 提供标准化流程
+- **增删改走 skill**：复杂操作由 SKILL.md 提供标准化流程
 
 ## 集成到各 Agent
 
@@ -67,14 +65,14 @@ Agent System Prompt (始终加载)
 
 **1. 安装 skill**
 
-将 `opencode/SKILL.md` 复制到 opencode 的 skills 目录：
-
 ```bash
 # Linux / macOS
-cp -r opencode ~/.agents/skills/memory/
+mkdir -p ~/.agents/skills/memory
+cp SKILL.md ~/.agents/skills/memory/
 
 # Windows PowerShell
-Copy-Item -Recurse opencode $env:USERPROFILE\.agents\skills\memory\
+New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills\memory
+Copy-Item SKILL.md $env:USERPROFILE\.agents\skills\memory\
 ```
 
 **2. 配置触发规则**
@@ -92,8 +90,7 @@ Copy-Item -Recurse opencode $env:USERPROFILE\.agents\skills\memory\
 - 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
 - 用户说"和上次一样"或类似表达
 
-记忆数据存放在 `~/.agents/memories/data/`。如需新增/修改/删除记忆，
-将 `~/.agents/memories/memory-skill.md` 的内容作为操作指令加载即可。
+在 system prompt 的最后加上：新增/修改/删除记忆时，加载 `~/.agents/memories/SKILL.md` 作为操作指令。
 ```
 
 ### Claude Code
@@ -109,11 +106,11 @@ Copy-Item -Recurse opencode $env:USERPROFILE\.agents\skills\memory\
 在任何 system prompt 中加入以下两句核心规则：
 
 1. **触发时查索引**：遇到偏好、历史、项目相关问题时，先读 `~/.agents/memories/INDEX.md`
-2. **增删改走 skill**：需要修改记忆时，加载 `~/.agents/memories/memory-skill.md` 中的操作流程
+2. **增删改走 skill**：需要修改记忆时，加载 `~/.agents/memories/SKILL.md` 中的操作流程
 
 ## 维护操作
 
-详细操作流程见 [memory-skill.md](./memory-skill.md)。简要概览：
+详细操作流程见 [SKILL.md](./SKILL.md)。简要概览：
 
 | 操作 | 做什么 | 改哪些文件 |
 |------|--------|-----------|
