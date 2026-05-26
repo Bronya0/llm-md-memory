@@ -50,10 +50,9 @@ Agent System Prompt (始终加载)
 
 ```
 ~/.agents/memories/
-├── INDEX.md              ← 记忆索引（agent 触发后先读它）
-├── SKILL.md              ← 操作流程（查询 / 新增 / 修改 / 删除）
+├── INDEX.md              ← 记忆索引
 └── data/                 ← 记忆数据
-    └── your-memory.md    ← 按主题分类的 .md 文件
+    └── xxx.md            ← 按主题分类的记忆文件
 ```
 
 ## 集成到各 Agent
