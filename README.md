@@ -28,26 +28,49 @@ Copy-Item $env:USERPROFILE\.agents\memories\SKILL.md $env:USERPROFILE\.agents\sk
 将以下内容复制给 AI，即可自动完成安装：
 
 ```markdown
-请帮我安装 llm-md-memory 记忆系统：
+请帮我安装 llm-md-memory 记忆系统。
+仓库地址：https://github.com/Bronya0/llm-md-memory
 
-1. 克隆仓库到 ~/.agents/memories/（如已存在则 git pull 更新）
-2. 将 ~/.agents/memories/SKILL.md 复制到 ~/.agents/skills/memory/SKILL.md
-3. 在 ~/.config/opencode/AGENTS.md 中插入以下触发规则：
+安装步骤（确保幂等，已存在则跳过）：
 
-## 记忆检查
+1. 如果 ~/.agents/memories/ 不存在，执行：
+   git clone https://github.com/Bronya0/llm-md-memory.git ~/.agents/memories
+   如果已存在，执行 git -C ~/.agents/memories pull
 
-在做以下事情之前，先读 `~/.agents/memories/INDEX.md` 检查是否有相关记忆：
+2. 根据当前 agent 类型安装 skill 和配置：
 
-- 开始一个新项目或接手一个已有项目
-- 做技术选型 / 架构决策
-- 用户提到了之前聊过的内容
-- 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
-- 用户说"和上次一样"或类似表达
+   opencode:
+   - 复制 SKILL.md: mkdir -p ~/.agents/skills/memory && cp ~/.agents/memories/SKILL.md ~/.agents/skills/memory/SKILL.md
+   - 在 ~/.config/opencode/AGENTS.md 中追加以下触发规则（如已存在则跳过）：
 
-记忆数据存放在 `~/.agents/memories/data/`。
-新增/修改/删除记忆时，加载 `~/.agents/memories/SKILL.md` 作为操作指令。
+   ```
+   ## 记忆检查
 
-4. 安装完成后告知我
+   在做以下事情之前，先读 ~/.agents/memories/INDEX.md 检查是否有相关记忆：
+
+   - 开始一个新项目或接手一个已有项目
+   - 做技术选型 / 架构决策
+   - 用户提到了之前聊过的内容
+   - 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
+   - 用户说"和上次一样"或类似表达
+
+   记忆数据存放在 ~/.agents/memories/data/。
+   新增/修改/删除记忆时，加载 ~/.agents/memories/SKILL.md 作为操作指令。
+   ```
+
+   Claude Code:
+   - 在 ~/.claude/CLAUDE.md 中添加上方触发规则（如已存在则跳过）
+   - 如需 skill 文件，复制到 ~/.claude/skills/memory/SKILL.md
+
+   Codex:
+   - 在 ~/.config/codex/AGENTS.md 中添加上方触发规则（如已存在则跳过）
+   - 如需 skill 文件，复制到 ~/.codex/skills/memory/SKILL.md
+
+   其他 agent：
+   - 读取 ~/.agents/memories/SKILL.md 内容注入 system prompt
+   - 添加上方触发规则到对应配置文件
+
+3. 安装完成后告知用户
 ```
 
 ## 设计原理
