@@ -6,25 +6,6 @@
 
 ## 安装
 
-```bash
-# 1. 克隆到用户目录
-git clone https://github.com/Bronya0/llm-md-memory.git ~/.agents/memories
-
-# 2. 安装 opencode skill
-mkdir -p ~/.agents/skills/memory
-cp ~/.agents/memories/SKILL.md ~/.agents/skills/memory/
-```
-
-**Windows (PowerShell)**：
-
-```powershell
-git clone https://github.com/Bronya0/llm-md-memory.git $env:USERPROFILE\.agents\memories
-New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills\memory
-Copy-Item $env:USERPROFILE\.agents\memories\SKILL.md $env:USERPROFILE\.agents\skills\memory\
-```
-
-### AI 自动安装
-
 将以下内容复制给 AI，即可自动完成安装：
 
 ```markdown
