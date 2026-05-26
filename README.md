@@ -23,7 +23,7 @@
    - Claude Code:  配置文件 ~/.claude/CLAUDE.md，将 ~/.agents/memories/SKILL.md 复制到 ~/.claude/skills/memory/SKILL.md
    - Codex:        配置文件 ~/.config/codex/AGENTS.md，将 ~/.agents/memories/SKILL.md 复制到 ~/.codex/skills/memory/SKILL.md
 
-3. 在上述配置文件中追加以下触发规则（如已存在则跳过）：
+3. 在上述配置文件（AGENTS.md / CLAUDE.md）中追加以下触发规则（如已存在则跳过）：
 
        ## 记忆检查
 
