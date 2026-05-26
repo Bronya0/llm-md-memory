@@ -18,11 +18,12 @@
    git clone https://github.com/Bronya0/llm-md-memory.git ~/.agents/memories
    如果已存在，执行 git -C ~/.agents/memories pull
 
-2. 根据当前 agent 类型安装 skill 和配置：
+2. 各 agent 配置文件位置：
+   - opencode:     ~/.config/opencode/AGENTS.md，skill 复制到 ~/.agents/skills/memory/SKILL.md
+   - Claude Code:  ~/.claude/CLAUDE.md，skill 复制到 ~/.claude/skills/memory/SKILL.md
+   - Codex:        ~/.config/codex/AGENTS.md，skill 复制到 ~/.codex/skills/memory/SKILL.md
 
-   opencode:
-   - 复制 SKILL.md: mkdir -p ~/.agents/skills/memory && cp ~/.agents/memories/SKILL.md ~/.agents/skills/memory/SKILL.md
-   - 在 ~/.config/opencode/AGENTS.md 中追加以下触发规则（如已存在则跳过）：
+3. 在上述配置文件中追加以下触发规则（如已存在则跳过）：
 
        ## 记忆检查
 
@@ -37,19 +38,7 @@
        记忆数据存放在 ~/.agents/memories/data/。
        新增/修改/删除记忆时，加载 ~/.agents/memories/SKILL.md 作为操作指令。
 
-   Claude Code:
-   - 在 ~/.claude/CLAUDE.md 中添加上方触发规则（如已存在则跳过）
-   - 如需 skill 文件，复制到 ~/.claude/skills/memory/SKILL.md
-
-   Codex:
-   - 在 ~/.config/codex/AGENTS.md 中添加上方触发规则（如已存在则跳过）
-   - 如需 skill 文件，复制到 ~/.codex/skills/memory/SKILL.md
-
-   其他 agent：
-   - 读取 ~/.agents/memories/SKILL.md 内容注入 system prompt
-   - 添加上方触发规则到对应配置文件
-
-3. 安装完成后告知用户
+4. 安装完成后告知用户
 ```
 
 ## 设计原理
