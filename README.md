@@ -19,9 +19,9 @@
    如果已存在，执行 git -C ~/.agents/memories pull
 
 2. 各 agent 配置文件位置：
-   - opencode:     ~/.config/opencode/AGENTS.md，skill 复制到 ~/.agents/skills/memory/SKILL.md
-   - Claude Code:  ~/.claude/CLAUDE.md，skill 复制到 ~/.claude/skills/memory/SKILL.md
-   - Codex:        ~/.config/codex/AGENTS.md，skill 复制到 ~/.codex/skills/memory/SKILL.md
+   - opencode:     配置文件 ~/.config/opencode/AGENTS.md，将 ~/.agents/memories/SKILL.md 复制到 ~/.agents/skills/memory/SKILL.md
+   - Claude Code:  配置文件 ~/.claude/CLAUDE.md，将 ~/.agents/memories/SKILL.md 复制到 ~/.claude/skills/memory/SKILL.md
+   - Codex:        配置文件 ~/.config/codex/AGENTS.md，将 ~/.agents/memories/SKILL.md 复制到 ~/.codex/skills/memory/SKILL.md
 
 3. 在上述配置文件中追加以下触发规则（如已存在则跳过）：
 
