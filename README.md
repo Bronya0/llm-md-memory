@@ -25,12 +25,30 @@ Copy-Item $env:USERPROFILE\.agents\memories\SKILL.md $env:USERPROFILE\.agents\sk
 
 ### AI 自动安装
 
-如果用户要求你安装 llm-md-memory，完成以下步骤：
+将以下内容复制给 AI，即可自动完成安装：
 
-1. 克隆仓库到 `~/.agents/memories/`（如已存在则 `git pull` 更新）
-2. 将 `~/.agents/memories/SKILL.md` 复制到 `~/.agents/skills/memory/SKILL.md`
-3. 在用户的 agent 配置文件中（opencode: `~/.config/opencode/AGENTS.md`）插入本文档"集成到各 Agent"章节中的触发规则
-4. 告知用户安装完成
+```markdown
+请帮我安装 llm-md-memory 记忆系统：
+
+1. 克隆仓库到 ~/.agents/memories/（如已存在则 git pull 更新）
+2. 将 ~/.agents/memories/SKILL.md 复制到 ~/.agents/skills/memory/SKILL.md
+3. 在 ~/.config/opencode/AGENTS.md 中插入以下触发规则：
+
+## 记忆检查
+
+在做以下事情之前，先读 `~/.agents/memories/INDEX.md` 检查是否有相关记忆：
+
+- 开始一个新项目或接手一个已有项目
+- 做技术选型 / 架构决策
+- 用户提到了之前聊过的内容
+- 遇到不确定的偏好问题（格式化风格、命名规范、工具选择等）
+- 用户说"和上次一样"或类似表达
+
+记忆数据存放在 `~/.agents/memories/data/`。
+新增/修改/删除记忆时，加载 `~/.agents/memories/SKILL.md` 作为操作指令。
+
+4. 安装完成后告知我
+```
 
 ## 设计原理
 
